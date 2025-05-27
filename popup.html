@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Structured Bookmark Organizer</title>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Organize Bookmark</h2>
+    
+    <div id="mainPopupForm" class="main-form-content">
+        <div class="form-group">
+          <label for="pageTitleText">Page Title:</label>
+          <p id="pageTitleText"><em>Loading...</em></p>
+        </div>
+
+        <div class="form-group">
+          <label for="pageUrlText">Page URL:</label>
+          <p id="pageUrlText"><em>Loading...</em></p>
+        </div>
+
+        <div class="form-group">
+          <label for="suggestedAlias">Bookmark Alias:</label>
+          <input type="text" id="suggestedAlias" name="suggestedAlias" placeholder="Enter bookmark alias">
+        </div>
+
+        <div class="form-group">
+          <label for="folderSelect">Target Folder:</label>
+          <select id="folderSelect"><option value="">Loading folders...</option></select>
+          <button type="button" id="createNewFolderBtn" class="inline-btn">New Folder</button>
+        </div>
+
+        <div id="newFolderInputContainer" style="display:none;" class="form-group">
+          <label for="newFolderName">New Folder Name:</label>
+          <input type="text" id="newFolderName" placeholder="Enter new folder name">
+          <div class="button-group">
+            <button type="button" id="confirmNewFolderBtn">Create</button>
+            <button type="button" id="cancelNewFolderBtn" class="secondary-btn">Cancel</button>
+          </div>
+        </div>
+        
+        <div class="actions">
+          <button id="saveBookmarkBtn" type="button" disabled>Save Bookmark</button>
+          <button id="reanalyzeBtn" type="button" style="display:none;">Re-analyze with AI</button>
+          <button id="cancelBtn" type="button">Cancel</button>
+        </div>
+    </div> <!-- End of mainPopupForm -->
+
+    <div id="statusMessage" aria-live="polite"></div>
+  </div>
+  <footer>
+    <p>Created by Anthony Spangenberg</p>
+    <div class="footer-buttons">
+      <button id="cleanEmptyFoldersBtn" class="options-btn" title="Clean Empty Folders"><img src="icons/remove-folders.png" alt="Clean"></button> <!-- Assuming you have a broom.png -->
+      <button id="openOptionsPage" class="options-btn" title="Open Settings"><img src="icons/gear.png" alt="Settings"></button>
+    </div>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>

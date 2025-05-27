@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structured Bookmark Organizer Options</title>
+  <link rel="stylesheet" type="text/css" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>AI-Powered Bookmark Organizer</h1>
+      <h2>Options</h2>
+    </header>
+
+    <div id="nuxPanel" class="nux-panel section" style="display:none;">
+      <div class="nux-content">
+        <h3>Welcome! Let's Get You Set Up</h3>
+        <p>Please complete the following steps to start using AI-powered bookmarking:</p>
+        <ol>
+          <li id="nuxStep1"><strong>API Key:</strong> Enter your Gemini API Key and test it.</li>
+          <li id="nuxStep2"><strong>Fetch Models:</strong> If the API key is valid, fetch available models.</li>
+          <li id="nuxStep3"><strong>Select Model:</strong> Choose a Gemini Model from the list.</li>
+          <li id="nuxStep4"><strong>Save Configuration:</strong> Save your settings to complete this part of the setup.</li>
+          <li id="nuxStep5" style="display:none;"><strong>Initial Bookmark Scan (Optional):</strong> Optionally scan and reclassify your existing bookmarks.</li>
+        </ol>
+        <p>Once done, this message will disappear.</p>
+      </div>
+    </div>
+
+    <div class="section" id="apiSection">
+      <h3>Gemini API Configuration</h3>
+      <p class="description">
+        Enter your Google Gemini API Key to enable AI features. 
+        <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Get a Gemini API Key</a>.
+      </p>
+      <p class="note"><strong>Important:</strong> Use of the Gemini API is subject to Google's terms and may incur costs. 
+        Review <a href="https://ai.google.dev/pricing" target="_blank" rel="noopener noreferrer">Gemini API pricing</a>.
+      </p>
+      
+      <div class="form-group api-key-group">
+        <label for="apiKey">Gemini API Key:</label>
+        <div class="input-with-button">
+          <input type="password" id="apiKey" placeholder="Paste your Gemini API Key here">
+          <button id="toggleApiKeyVisibility" type="button" title="Show/Hide API Key">Show</button>
+        </div>
+      </div>
+      <div class="button-group">
+        <button id="fetchModelsBtn" type="button" disabled>Fetch Available Models</button> 
+      </div>
+      <p id="apiKeyStatus" class="status" aria-live="polite"></p>
+    </div>
+
+    <div class="section" id="modelSelectionSection">
+      <h3>Gemini Model Selection</h3>
+      <p class="description">Select the Gemini model for content generation. Models supporting 'generateContent' will be listed after fetching.</p>
+      <div class="form-group">
+        <label for="modelSelect">Choose a Gemini Model:</label>
+        <select id="modelSelect" name="modelSelect" disabled>
+          <option value="">-- Enter API Key and Fetch Models --</option>
+        </select>
+      </div>
+      <div class="button-group">
+        <button id="verifyModelSelectionBtn" type="button" disabled>Verify Model Selection</button> <!-- MOVED and RENAMED from testApiKeyBtn -->
+      </div>
+      <p id="modelStatus" class="status" aria-live="polite"></p>
+    </div>
+
+    <div class="section" id="saveAllSettingsSection">
+        <h3 id="saveAllSettingsHeader">Save Configuration</h3> 
+        <p class="description" id="saveAllSettingsDescription">Make sure to save all your changes across sections.</p>
+        <div class="button-group">
+            <button id="saveSettings" type="button">Save Configuration</button> 
+        </div>
+        <p id="settingsStatus" class="status" aria-live="polite"></p>
+    </div>
+
+    <!-- NUX Bulk Reclassify Offer Section (Initially Hidden) -->
+    <div id="nuxBulkReclassifyOfferSection" class="section" style="display:none;">
+      <h3>Organize Existing Bookmarks?</h3>
+      <p class="description">
+        Your setup is complete! Would you like to perform an initial AI-powered reclassification of your existing bookmarks?
+        This will analyze your bookmarks and suggest a new structure. You'll see a report before any changes are made.
+      </p>
+      <div class="button-group">
+        <button id="nuxStartReclassifyBtn" type="button">Yes, Analyze My Bookmarks</button>
+        <button id="nuxSkipReclassifyBtn" type="button" class="secondary-btn">No, Maybe Later</button>
+      </div>
+      <div id="nuxReclassifyUiContainer" style="display:none;"> <!-- Container for progress, log, report -->
+        <!-- Progress Bar and Log will be dynamically shown here -->
+         <div class="progress-bar-container" style="margin-top: 15px;">
+            <div id="nuxReclassifyProgressBar" class="progress-bar"></div>
+        </div>
+        <p id="nuxReclassifyProgressText" class="progress-text">0 / 0</p>
+        <div id="nuxReclassifyLogOutput" class="log-window"></div>
+        <pre id="nuxReclassifyReportOutput" style="display:none;">Report will appear here...</pre>
+        <div class="button-group" id="nuxReclassifyConfirmControls" style="display:none;">
+            <button id="nuxConfirmReclassifyBtn" type="button" class="danger-btn" disabled>Confirm & Apply Changes</button>
+            <button id="nuxCancelReclassifyBtn" type="button">Cancel Analysis</button> 
+        </div>
+      </div>
+      <p id="nuxReclassifyStatus" class="status" aria-live="polite"></p>
+    </div>
+
+    <div class="section" id="bulkReclassifySection">
+      <h3>Advanced: Bulk Reclassify Bookmarks</h3>
+      <p class="description">
+        Re-evaluate all existing bookmarks and folders. This process will analyze your entire bookmark structure
+        and suggest a new, optimized organization. You will be shown a report of proposed changes before applying them.
+        This can take a significant amount of time and API calls depending on the number of bookmarks.
+      </p>
+      <div class="form-group" id="startReclassifyGroup">
+        <button id="startReclassifyAnalysisBtn" type="button">Start Reclassification Analysis</button>
+      </div>
+      <div id="reclassifyReportContainer" style="display:none;">
+        <h4>Reclassification Report:</h4>
+        <div class="progress-bar-container">
+          <div id="reclassifyProgressBar" class="progress-bar"></div>
+        </div>
+        <p id="reclassifyProgressText" class="progress-text">0 / 0</p>
+        <div id="reclassifyLogOutput" class="log-window"></div>
+        <pre id="reclassifyReportOutput">Report will appear here...</pre>
+        <div class="button-group" id="reclassifyActionButtons" style="display:none;">
+          <button id="confirmReclassifyBtn" type="button" class="danger-btn" disabled>Confirm & Apply Changes</button>
+          <button id="cancelReclassifyBtn" type="button">Cancel</button>
+        </div>
+      </div>
+      <p id="reclassifyStatus" class="status" aria-live="polite"></p>
+    </div>
+
+    <div class="section" id="advancedSettingsSection">
+      <h3>Advanced Settings</h3>
+      <div class="form-group">
+        <button id="resetSettingsBtn" type="button" class="danger-btn">Reset All Settings to Default</button>
+        <p class="note">This clears your API key, model, and preferences, and re-triggers the setup.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>Created by Anthony Spangenberg</p>
+    </footer>
+
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

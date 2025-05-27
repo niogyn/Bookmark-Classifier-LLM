@@ -1,0 +1,435 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #161617; /* Darker base for options page */
+  color: #f5f5f7;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 700px; /* Increased max-width for better readability */
+  margin: 0 auto;
+  padding: 30px 20px; /* More padding */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #f5f5f7;
+  margin: 0 0 5px 0;
+}
+
+header h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #aeb1b6;
+  margin: 0;
+}
+
+.section {
+  background-color: rgba(29, 29, 31, 0.9);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  border: 1px solid rgba(80, 80, 82, 0.3);
+}
+
+.section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f5f5f7;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(80, 80, 82, 0.5);
+  padding-bottom: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Consistent gap */
+  margin-bottom: 20px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #aeb1b6;
+}
+
+.form-group.checkbox-group {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group.checkbox-group label {
+  margin-bottom: 0; /* Align with checkbox */
+  font-weight: normal; /* Less emphasis for checkbox label */
+  color: #f5f5f7;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  background-color: rgba(58, 58, 60, 0.7);
+  color: #f5f5f7;
+  border: 1px solid rgba(80, 80, 82, 0.5);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  width: 100%; /* Make inputs take full width of their container */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #8e8e93;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+  background-color: rgba(72, 72, 74, 0.9);
+  border-color: rgba(0, 122, 255, 0.7);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.3);
+}
+
+.input-with-button {
+  display: flex;
+  gap: 8px;
+}
+
+.input-with-button input {
+  flex-grow: 1;
+}
+
+.input-with-button button {
+  flex-shrink: 0; /* Prevent button from shrinking */
+  padding: 0 15px; /* Adjust padding for show/hide button */
+  height: auto; /* Let padding define height */
+  line-height: normal; /* Ensure text is centered if padding is tricky */
+}
+
+button {
+  background-color: #007aff;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #005ecb;
+}
+
+button:active {
+  background-color: #004bad;
+  transform: scale(0.98);
+}
+
+button:disabled {
+  background-color: #444;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: flex-start; /* Align buttons to the start */
+}
+
+.button-group button {
+  flex-grow: 0; /* Don't let all buttons grow equally unless specified */
+}
+
+#saveSettings {
+    background-color: #34c759; /* Green for primary save action */
+}
+#saveSettings:hover {
+    background-color: #2ca048;
+}
+
+.danger-btn {
+  background-color: #ff3b30; /* iOS red for danger actions */
+}
+
+.danger-btn:hover {
+  background-color: #d93223;
+}
+
+/* Styles for Bulk Reclassification Progress */
+.progress-bar-container {
+  width: 100%;
+  background-color: #555;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  width: 0%; /* Initial width */
+  height: 20px;
+  background-color: #007aff; /* iOS blue */
+  border-radius: 4px;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  transition: width 0.2s ease-out;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #aeb1b6;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.log-window {
+  background-color: #000;
+  color: #0f0; /* Green text like a terminal */
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 12px;
+  height: 150px; /* Adjust as needed */
+  overflow-y: auto; /* Scroll for overflow */
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 15px;
+  white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+}
+
+.log-window .log-entry {
+  margin-bottom: 3px;
+}
+
+.log-window .log-entry.error {
+  color: #ff3b30; /* Red for errors */
+}
+
+.log-window .log-entry.info {
+  color: #0096ff; /* Blue for info */
+}
+
+.status {
+  font-size: 13px;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: left; /* Align status text to the left */
+  margin-top: 15px;
+  opacity: 1; /* Keep status messages visible until changed */
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  word-wrap: break-word;
+  border: 1px solid transparent;
+}
+
+.status.success {
+  background-color: rgba(52, 199, 89, 0.2);
+  color: #34c759;
+  border-color: rgba(52, 199, 89, 0.4);
+}
+
+.status.error {
+  background-color: rgba(255, 59, 48, 0.2);
+  color: #ff3b30;
+  border-color: rgba(255, 59, 48, 0.4);
+}
+
+.status.info {
+  background-color: rgba(0, 122, 255, 0.15);
+  color: #007aff;
+  border-color: rgba(0, 122, 255, 0.3);
+}
+
+.note {
+  font-size: 12px;
+  color: #8e8e93;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.description {
+  font-size: 14px;
+  color: #c7c7cc;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+a {
+  color: #0096ff; /* Brighter blue for links */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #33abff;
+  text-decoration: underline;
+}
+
+/* NUX Panel Specifics */
+.nux-panel {
+  border-left: 4px solid #007aff;
+}
+.nux-panel h3 {
+  color: #007aff;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.nux-panel ol {
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  list-style: none; /* Remove default numbering if we use custom indicators */
+}
+.nux-panel li {
+  margin-bottom: 12px; /* Increased margin */
+  color: #c7c7cc;
+  padding: 8px 0; /* Add some padding */
+  position: relative; /* For pseudo-elements if needed for styling */
+  transition: color 0.3s ease;
+}
+
+.nux-panel li.active {
+  color: #f5f5f7; /* Brighter text for active step */
+  font-weight: 600;
+}
+
+/* Blue left border for active step - applied to the li itself */
+.nux-panel li.active::before {
+  content: "";
+  position: absolute;
+  left: -24px; /* Adjust to align with panel's border or desired position */
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #007aff; /* Blue indicator */
+  border-radius: 2px;
+}
+
+.nux-panel li.completed {
+  color: #8e8e93; /* Dimmer text for completed steps */
+  text-decoration: line-through; /* Optional: strike-through completed */
+}
+
+.nux-panel li.completed::before {
+ content: "\2713\00A0"; /* Corrected: Single backslash for Unicode escape */
+ color: #34c759; /* Green checkmark */
+ font-weight: bold;
+ margin-left: -20px; /* Adjust as needed */
+ position: absolute;
+ left: 0px; /* Position relative to li */
+}
+
+
+/* Styles for sections being faded in/out */
+.section.fade-in {
+  animation: fadeInAnimation 0.5s ease-in-out forwards;
+}
+
+.section.fade-out {
+  animation: fadeOutAnimation 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeInAnimation {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOutAnimation {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Pulse animation for buttons/inputs */
+.pulse {
+  animation: pulseAnimation 1.5s infinite;
+}
+
+@keyframes pulseAnimation {
+  0% { box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 122, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 122, 255, 0); }
+}
+
+/* Style for NUX disabled sections (when a section is visible but not the current focus) */
+.nux-disabled-section {
+  opacity: 0.5;
+  pointer-events: none; /* Prevent interaction with disabled sections */
+  transition: opacity 0.3s ease-in-out;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(80, 80, 82, 0.5);
+}
+
+footer p {
+  font-size: 12px;
+  color: #8e8e93;
+  margin: 0;
+}
+
+/* Styling for the select dropdown arrow */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23AEB1B6%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 10px;
+  padding-right: 35px; /* Make space for the arrow */
+}
+
+select option {
+    background-color: #3A3A3C; 
+    color: #F5F5F7;
+}
+
+/* Popup specific styles for options link */
+.options-link-container {
+    text-align: center;
+    margin-top: 15px; /* Add some space above the link */
+}
+
+.options-link-container a {
+    font-size: 13px;
+    color: #aeb1b6; /* Subtle color */
+    text-decoration: none;
+}
+
+.options-link-container a:hover {
+    color: #f5f5f7;
+    text-decoration: underline;
+}
