@@ -240,7 +240,7 @@ The extension uses the Gemini API to generate a concise title and a brief summar
             *   Perform a test call to the Gemini API to ensure the settings are correct.
             *   If successful, the NUX panel will disappear, and the core setup is complete.
         5.  **Step 5: Optional Bulk Reclassification.** After the API key and model are successfully saved, you will be presented with an option to perform an initial **Bulk Reclassification** of your existing bookmarks. This step is optional and can be skipped if you prefer to organize bookmarks individually or at a later time.
-\r\n## Usage\r\n
+## Usage
 *   **Retroactive Organization (Automatic)**:
     *   (Note: The automatic retroactive organization feature is currently under development or temporarily disabled.)
     *   Previously, this feature would automatically process newly created bookmarks. Functionality may be restored or revised in future updates.
